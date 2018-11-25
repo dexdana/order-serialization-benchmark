@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.7.1, pytest-4.0.1, py-1.7.0, pluggy-0.8.0 -- ~/.local/share/virtualenvs/encoding-benchmark-PKRo7BTF/bin/python3.7
+cachedir: .pytest_cache
+benchmark: 3.1.1 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: encoding-benchmark, inifile:
+plugins: benchmark-3.1.1
+collecting ... collected 7 items
+
+
+=============================== warnings summary ===============================
+benchmark-serialize.py::test_serialize_ethabi
+  eth_utils/types.py:38: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    return not is_string(obj) and isinstance(obj, collections.Sequence)
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+
+----------------------------------------------------------------------------------------------- benchmark: 7 tests ----------------------------------------------------------------------------------------------
+Name (time in us)                           Min                 Max                Mean             StdDev              Median                IQR            Outliers  OPS (Kops/s)            Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_serialize_pickle                    1.3300 (1.0)       29.0070 (1.0)        1.3805 (1.0)       0.3683 (1.0)        1.3630 (1.0)       0.0120 (1.0)      277;3884      724.3742 (1.0)       34801           1
+test_serialize_pickle_with_keys          1.9980 (1.50)      46.8440 (1.61)       2.0861 (1.51)      0.4292 (1.17)       2.0620 (1.51)      0.0230 (1.92)    554;10743      479.3667 (0.66)     148435           1
+test_serialize_rapidjson                 3.1160 (2.34)      45.0190 (1.55)       3.2573 (2.36)      0.6533 (1.77)       3.2000 (2.35)      0.0700 (5.83)     169;1574      307.0035 (0.42)      30393           1
+test_serialize_rapidjson_with_keys       3.9450 (2.97)      62.3840 (2.15)       4.2005 (3.04)      0.7068 (1.92)       4.1420 (3.04)      0.0510 (4.25)     346;8217      238.0665 (0.33)      57013           1
+test_serialize_json                      4.8780 (3.67)      42.7590 (1.47)       5.1276 (3.71)      0.7212 (1.96)       5.0710 (3.72)      0.1010 (8.42)     333;1378      195.0241 (0.27)      27640           1
+test_serialize_json_with_keys            6.7370 (5.07)      55.6060 (1.92)       6.9800 (5.06)      0.8337 (2.26)       6.9050 (5.07)      0.0870 (7.25)     744;2525      143.2666 (0.20)      56095           1
+test_serialize_ethabi                  499.8360 (375.82)   732.9900 (25.27)    515.4208 (373.36)   36.6857 (99.61)    502.6180 (368.76)   10.8090 (900.75)        4;7        1.9402 (0.00)         49           1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+===================== 7 passed, 1 warnings in 4.36 seconds =====================
